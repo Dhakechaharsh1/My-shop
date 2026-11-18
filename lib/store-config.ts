@@ -9,6 +9,7 @@ export const STORE = {
   coupons: {
     WELCOME10: { percent: 10, label: "10% off your first order" },
     SHAGUN15: { percent: 15, label: "15% off — wedding season", minSubtotal: 4000 },
+    ROOHAGAIN: { percent: 10, label: "10% off — thank you for coming back" },
   } as Record<string, { percent: number; label: string; minSubtotal?: number }>,
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM || "rooh.gehna",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "",
