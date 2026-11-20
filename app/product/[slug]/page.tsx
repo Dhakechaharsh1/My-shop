@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PRODUCTS, categoryLabel, getProduct } from "@/lib/products";
+import { PRODUCTS, getProduct } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
 import ProductView from "./ProductView";
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${p.name} — ${p.subtitle}`,
     description: p.description,
-    openGraph: { title: `${p.name} — ${p.subtitle}`, description: p.description, images: p.images[0] ? [p.images[0]] : ["/brand/hero.jpg"] },
+    openGraph: { title: `${p.name} — ${p.subtitle}`, description: p.description, images: [p.images[0]] },
   };
 }
 
@@ -25,35 +25,32 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
-
-  const related = [
-    ...PRODUCTS.filter((p) => p.id !== product.id && p.category === product.category),
-    ...PRODUCTS.filter((p) => p.id !== product.id && p.category !== product.category),
-  ].slice(0, 3);
+  const others = PRODUCTS.filter((p) => p.id !== product.id);
 
   return (
     <div className="container">
       <nav className="crumbs" aria-label="Breadcrumb">
         <Link href="/">Home</Link>/<Link href="/shop">Shop</Link>/
-        <Link href={`/shop?c=${product.category}`}>{categoryLabel(product.category)}</Link>/
         <span style={{ color: "var(--ink)" }}>{product.name}</span>
       </nav>
 
       <ProductView product={product} />
 
-      <section className="section">
-        <Reveal className="section-head">
-          <h2 className="h2">You may also love</h2>
-          <Link href="/shop" className="link-arrow">Shop all</Link>
-        </Reveal>
-        <div className="grid">
-          {related.map((p, i) => (
-            <Reveal key={p.id} delay={i * 80}>
-              <ProductCard product={p} />
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {others.length > 0 && (
+        <section className="section">
+          <Reveal className="section-head">
+            <h2 className="h2">Also in this drop</h2>
+            <Link href="/shop" className="link-arrow">Shop all</Link>
+          </Reveal>
+          <div className={`grid grid--two ${others.length === 1 ? "grid--single" : ""}`}>
+            {others.map((p, i) => (
+              <Reveal key={p.id} delay={i * 80}>
+                <ProductCard product={p} />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

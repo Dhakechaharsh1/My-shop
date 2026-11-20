@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import JewelArt from "@/components/JewelArt";
+import { PRODUCTS } from "@/lib/products";
 
 export const metadata: Metadata = { title: "Our Story", description: "The story behind Rooh Gehna by Khushi." };
 
@@ -17,7 +17,10 @@ export default function About() {
       </div>
       <section className="section--tight" style={{ paddingTop: 0 }}>
         <div className="container story">
-          <Reveal className="story__art" ><JewelArt kind="rani-haar" stone="polki" variant={2} /></Reveal>
+          <Reveal className="story__art">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={PRODUCTS[1].images[2]} alt={`${PRODUCTS[1].name} earring, close-up`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </Reveal>
           <Reveal className="story__body" delay={100}>
             <span className="eyebrow">Our beginning</span>
             <h2 className="h2">Every gehna has a rooh.</h2>
@@ -26,7 +29,7 @@ export default function About() {
               wedding. The jhumkas you borrowed for your first Diwali away from home. These pieces carry a little of us.
             </p>
             <p className="lede">
-              Khushi started Rooh Gehna to bring that feeling to today: heirloom-inspired kundan, polki and pearl jewellery that is
+              Khushi started Rooh Gehna to bring that feeling to today: heirloom-inspired jewellery that is
               light, comfortable, and thoughtfully priced — so it can be part of your celebrations and your everyday.
             </p>
           </Reveal>

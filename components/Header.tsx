@@ -1,23 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { useCart } from "./CartContext";
-import { BagIcon, CloseIcon, MenuIcon, SearchIcon } from "./Icons";
-import { CATEGORIES } from "@/lib/products";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { CloseIcon, InstagramIcon, MenuIcon } from "./Icons";
+import { STORE } from "@/lib/store-config";
 
 export default function Header() {
-  const { count, setOpen, ready } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [search, setSearch] = useState(false);
-  const [q, setQ] = useState("");
-  const [bump, setBump] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const prev = useRef(count);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -26,31 +18,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    setMenu(false);
-    setSearch(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (ready && count > prev.current) {
-      setBump(true);
-      const t = setTimeout(() => setBump(false), 500);
-      prev.current = count;
-      return () => clearTimeout(t);
-    }
-    prev.current = count;
-  }, [count, ready]);
-
-  useEffect(() => {
-    if (search) inputRef.current?.focus();
-  }, [search]);
+  useEffect(() => setMenu(false), [pathname]);
 
   const isHome = pathname === "/";
+  const active = (p: string) => (pathname === p || pathname.startsWith(p + "/") ? "is-active" : "");
 
   return (
     <>
       <div className="announce">
-        <span className="announce__long">Free shipping on orders above ₹999 &nbsp;·&nbsp; </span>Use <b>WELCOME10</b> for 10% off your first order
+        New: the Mor Ghungroo earrings <span className="announce__long">&nbsp;·&nbsp; Order with a DM on Instagram</span>
       </div>
       <header className={`nav ${scrolled || !isHome ? "nav--solid" : ""} ${menu ? "nav--open" : ""}`}>
         <div className="nav__inner">
@@ -59,10 +35,9 @@ export default function Header() {
           </button>
 
           <nav className="nav__links" aria-label="Primary">
-            <Link href="/shop" className={pathname === "/shop" ? "is-active" : ""}>Shop</Link>
-            <Link href="/shop?c=necklaces">Necklaces</Link>
-            <Link href="/shop?c=earrings">Earrings</Link>
-            <Link href="/about" className={pathname === "/about" ? "is-active" : ""}>Our Story</Link>
+            <Link href="/shop" className={active("/shop")}>Shop</Link>
+            <Link href="/about" className={active("/about")}>Our Story</Link>
+            <Link href="/contact" className={active("/contact")}>Contact</Link>
           </nav>
 
           <Link href="/" className="nav__brand" aria-label="Rooh Gehna — home">
@@ -72,40 +47,18 @@ export default function Header() {
           </Link>
 
           <div className="nav__actions">
-            <Link href="/contact" className="nav__text-link">Contact</Link>
-            <button className="nav__icon" aria-label="Search" onClick={() => setSearch((s) => !s)}>
-              <SearchIcon />
-            </button>
-            <button className={`nav__icon nav__bag ${bump ? "bump" : ""}`} aria-label={`Bag, ${count} items`} onClick={() => setOpen(true)}>
-              <BagIcon />
-              {ready && count > 0 && <span className="nav__count">{count}</span>}
-            </button>
+            <a href={STORE.instagramUrl} target="_blank" rel="noopener noreferrer" className="nav__ig">
+              <InstagramIcon size={17} />
+              <span>Order on Instagram</span>
+            </a>
           </div>
         </div>
 
-        <div className={`nav__search ${search ? "is-open" : ""}`}>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              router.push(`/shop?q=${encodeURIComponent(q.trim())}`);
-              setSearch(false);
-            }}
-          >
-            <SearchIcon size={18} />
-            <input ref={inputRef} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search jhumkas, chokers, tikka…" aria-label="Search products" />
-            <button type="button" className="nav__icon" aria-label="Close search" onClick={() => setSearch(false)}>
-              <CloseIcon size={18} />
-            </button>
-          </form>
-        </div>
-
         <div className={`nav__sheet ${menu ? "is-open" : ""}`}>
-          <Link href="/shop">Shop all</Link>
-          {CATEGORIES.map((c) => (
-            <Link key={c.id} href={`/shop?c=${c.id}`}>{c.label}</Link>
-          ))}
+          <Link href="/shop">Shop</Link>
           <Link href="/about">Our Story</Link>
           <Link href="/contact">Contact</Link>
+          <a href={STORE.instagramUrl} target="_blank" rel="noopener noreferrer">Order on Instagram</a>
         </div>
       </header>
     </>

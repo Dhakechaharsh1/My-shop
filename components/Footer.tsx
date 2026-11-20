@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { STORE } from "@/lib/store-config";
-import { CATEGORIES } from "@/lib/products";
-import { InstagramIcon, MailIcon, WhatsAppIcon } from "./Icons";
+import { PRODUCTS } from "@/lib/products";
+import { InstagramIcon, MailIcon } from "./Icons";
 
 export default function Footer() {
   return (
@@ -12,25 +12,22 @@ export default function Footer() {
           <img src="/brand/logo-lockup-cream.png" alt="Rooh Gehna by Khushi" width={180} height={136} />
           <p>Handpicked heritage jewellery, made to be worn with love — and passed on with stories.</p>
           <div className="footer__social">
-            <a href={`https://instagram.com/${STORE.instagram}`} target="_blank" rel="noreferrer" aria-label="Instagram"><InstagramIcon /></a>
-            {STORE.whatsapp && (
-              <a href={`https://wa.me/${STORE.whatsapp}`} target="_blank" rel="noreferrer" aria-label="WhatsApp"><WhatsAppIcon /></a>
-            )}
+            <a href={STORE.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon /></a>
             <a href={`mailto:${STORE.email}`} aria-label="Email"><MailIcon /></a>
           </div>
         </div>
         <div>
           <h4>Shop</h4>
           <Link href="/shop">All jewellery</Link>
-          {CATEGORIES.map((c) => (
-            <Link key={c.id} href={`/shop?c=${c.id}`}>{c.label}</Link>
+          {PRODUCTS.map((p) => (
+            <Link key={p.id} href={`/product/${p.slug}`}>{p.name}</Link>
           ))}
         </div>
         <div>
           <h4>Help</h4>
           <Link href="/contact">Contact us</Link>
           <Link href="/policies/shipping">Shipping</Link>
-          <Link href="/policies/returns">Returns & refunds</Link>
+          <Link href="/policies/returns">Returns & exchanges</Link>
           <Link href="/policies/care">Jewellery care</Link>
         </div>
         <div>
@@ -42,7 +39,7 @@ export default function Footer() {
       </div>
       <div className="container footer__base">
         <span>© {new Date().getFullYear()} Rooh Gehna by Khushi. All rights reserved.</span>
-        <span className="footer__pay">Secure payments · UPI · Cards · Netbanking · Wallets</span>
+        <span className="footer__pay">Orders on Instagram · @{STORE.instagram}</span>
       </div>
     </footer>
   );

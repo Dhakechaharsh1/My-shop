@@ -2,17 +2,16 @@
 export const STORE = {
   name: "Rooh Gehna",
   tagline: "Jewellery for the soul",
-  currency: "INR",
-  freeShippingAbove: 999,
-  shippingFee: 79,
-  /** Coupon codes: percent off the subtotal. Validated on the server. */
-  coupons: {
-    WELCOME10: { percent: 10, label: "10% off your first order" },
-    SHAGUN15: { percent: 15, label: "15% off — wedding season", minSubtotal: 4000 },
-    ROOHAGAIN: { percent: 10, label: "10% off — thank you for coming back" },
-  } as Record<string, { percent: number; label: string; minSubtotal?: number }>,
-  instagram: process.env.NEXT_PUBLIC_INSTAGRAM || "rooh.gehna",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "",
+  /** Every "Order on Instagram" button opens this link. */
+  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/rooh.gehna?dmpr=MTJyb2JlcGw2bGpxdQ==",
+  instagram: "rooh.gehna",
   email: process.env.NEXT_PUBLIC_EMAIL || "hello@roohgehna.com",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 };
+
+/** The message we copy for the customer to paste into their Instagram DM. */
+export function orderMessage(name?: string, subtitle?: string) {
+  return name
+    ? `Hi Rooh Gehna! I'd like to order ${name} (${subtitle}). Could you share the price and delivery details?`
+    : "Hi Rooh Gehna! I'd like to order from your collection. Could you share prices and delivery details?";
+}

@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { STORE } from "@/lib/store-config";
 import Reveal from "@/components/Reveal";
-import { InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/Icons";
+import { InstagramIcon, MailIcon } from "@/components/Icons";
 
 export const metadata: Metadata = { title: "Contact", description: "Get in touch with Rooh Gehna by Khushi." };
 
 export default function Contact() {
   const cards = [
-    STORE.whatsapp && { href: `https://wa.me/${STORE.whatsapp}`, icon: <WhatsAppIcon size={26} />, t: "WhatsApp", d: `+${STORE.whatsapp}`, ext: true },
-    { href: `https://instagram.com/${STORE.instagram}`, icon: <InstagramIcon size={26} />, t: "Instagram", d: `@${STORE.instagram} — DM us anytime`, ext: true },
+    { href: STORE.instagramUrl, icon: <InstagramIcon size={26} />, t: "Instagram", d: `@${STORE.instagram} — DM us to order`, ext: true },
     { href: `mailto:${STORE.email}`, icon: <MailIcon size={26} />, t: "Email", d: STORE.email, ext: false },
-  ].filter(Boolean) as { href: string; icon: React.ReactNode; t: string; d: string; ext: boolean }[];
+  ];
 
   return (
     <div className="container">
@@ -22,7 +21,7 @@ export default function Contact() {
       <div className="contact-grid" style={{ gridTemplateColumns: cards.length === 2 ? "repeat(2, 1fr)" : undefined }}>
         {cards.map((c, i) => (
           <Reveal key={c.t} delay={i * 80}>
-            <a className="contact-card" href={c.href} target={c.ext ? "_blank" : undefined} rel="noreferrer">
+            <a className="contact-card" href={c.href} target={c.ext ? "_blank" : undefined} rel="noopener noreferrer">
               {c.icon}
               <b>{c.t}</b>
               <span>{c.d}</span>
@@ -31,7 +30,7 @@ export default function Contact() {
         ))}
       </div>
       <div className="prose" style={{ textAlign: "center" }}>
-        <p>For order queries, please keep your order number (it starts with <b>RG-</b>) handy.</p>
+        <p>All orders are taken on Instagram. Send us a DM with the name of the piece you love.</p>
       </div>
     </div>
   );
