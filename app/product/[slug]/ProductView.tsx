@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import ProductImage from "@/components/ProductImage";
 import OrderButton from "@/components/OrderButton";
 import { ChevronIcon, GiftIcon, ShieldIcon, TruckIcon } from "@/components/Icons";
@@ -59,11 +59,11 @@ export default function ProductView({ product }: { product: Product }) {
             <h1 className="pdp__title">{product.name}</h1>
             <p className="pdp__sub">{product.subtitle}</p>
           </div>
-          <div className="pdp__price">DM for price</div>
+          <div className="pdp__price">{formatPrice(product.price)}<em>DM to order</em></div>
           <p className="pdp__desc">{product.description}</p>
 
           <div className="pdp__order" ref={buyRef}>
-            <OrderButton name={product.name} subtitle={product.subtitle} className="btn btn--primary btn--block btn--lg" showHint />
+            <OrderButton name={product.name} subtitle={product.subtitle} price={formatPrice(product.price)} className="btn btn--primary btn--block btn--lg" showHint />
           </div>
 
           <div className="pdp__perks">
@@ -82,8 +82,8 @@ export default function ProductView({ product }: { product: Product }) {
             <details>
               <summary>How to order <ChevronIcon size={18} /></summary>
               <div className="acc__body">
-                Tap “Order on Instagram” and send us a DM with the name of this piece ({product.name}). We’ll reply with the price,
-                payment options and delivery time, and pack your order once it’s confirmed.
+                Tap “DM to order on Instagram” and send us a DM with the name of this piece ({product.name}). We’ll confirm availability,
+                share payment options and delivery time, and pack your order once it’s confirmed.
               </div>
             </details>
             <details>
@@ -100,9 +100,9 @@ export default function ProductView({ product }: { product: Product }) {
       <div className={`sticky-buy ${sticky ? "is-on" : ""}`}>
         <div>
           <b>{product.name}</b>
-          <span>DM for price</span>
+          <span>{formatPrice(product.price)} · DM to order</span>
         </div>
-        <OrderButton name={product.name} subtitle={product.subtitle} label="Order" />
+        <OrderButton name={product.name} subtitle={product.subtitle} price={formatPrice(product.price)} label="DM to order" />
       </div>
     </>
   );

@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       <div className="announce">
-        New: the Mor Ghungroo earrings <span className="announce__long">&nbsp;·&nbsp; Order with a DM on Instagram</span>
+        New: the Mor Ghungroo earrings <span className="announce__long">&nbsp;·&nbsp; DM us on Instagram to order</span>
       </div>
       <header className={`nav ${scrolled || !isHome ? "nav--solid" : ""} ${menu ? "nav--open" : ""}`}>
         <div className="nav__inner">
@@ -49,7 +49,7 @@ export default function Header() {
           <div className="nav__actions">
             <a href={STORE.instagramUrl} target="_blank" rel="noopener noreferrer" className="nav__ig">
               <InstagramIcon size={17} />
-              <span>Order on Instagram</span>
+              <span>DM to order</span>
             </a>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Header() {
           <Link href="/shop">Shop</Link>
           <Link href="/about">Our Story</Link>
           <Link href="/contact">Contact</Link>
-          <a href={STORE.instagramUrl} target="_blank" rel="noopener noreferrer">Order on Instagram</a>
+          <a href={STORE.instagramUrl} target="_blank" rel="noopener noreferrer">DM to order on Instagram</a>
         </div>
       </header>
     </>

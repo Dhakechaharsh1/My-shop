@@ -11,12 +11,14 @@ import { InstagramIcon } from "./Icons";
 export default function OrderButton({
   name,
   subtitle,
-  label = "Order on Instagram",
+  price,
+  label = "DM to order on Instagram",
   className = "btn btn--primary",
   showHint = false,
 }: {
   name?: string;
   subtitle?: string;
+  price?: string;
   label?: string;
   className?: string;
   showHint?: boolean;
@@ -31,7 +33,7 @@ export default function OrderButton({
         className={className}
         onClick={() => {
           try {
-            navigator.clipboard?.writeText(orderMessage(name, subtitle)).then(
+            navigator.clipboard?.writeText(orderMessage(name, subtitle, price)).then(
               () => setCopied(true),
               () => {},
             );
@@ -44,8 +46,8 @@ export default function OrderButton({
       {showHint && (
         <p className="order-hint" aria-live="polite">
           {copied
-            ? "Message copied. Paste it in your DM to @rooh.gehna and we’ll reply with the price."
-            : "Opens our Instagram. Send us a DM with the piece you love and we’ll share the price and delivery details."}
+            ? "Message copied. Paste it in your DM to @rooh.gehna and we’ll confirm your order."
+            : "Opens our Instagram. Send us a DM with the piece’s name and we’ll confirm availability and delivery."}
         </p>
       )}
     </>

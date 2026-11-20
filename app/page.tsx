@@ -88,7 +88,7 @@ export default function Home() {
           <div className="steps">
             {[
               ["Choose your pair", "Browse the collection and pick the colour you love."],
-              ["Send us a DM", "Tap “Order on Instagram” and message @rooh.gehna with the piece’s name. We’ll reply with the price and delivery details."],
+              ["Send us a DM", "Tap “DM to order” and message @rooh.gehna with the piece’s name. We’ll confirm availability and delivery details."],
               ["We pack it with love", "Your piece arrives in our gift-ready box, wrapped by hand."],
             ].map(([t, d], i) => (
               <Reveal key={t} className="step" delay={i * 80}>

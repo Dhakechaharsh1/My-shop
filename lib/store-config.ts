@@ -10,8 +10,8 @@ export const STORE = {
 };
 
 /** The message we copy for the customer to paste into their Instagram DM. */
-export function orderMessage(name?: string, subtitle?: string) {
+export function orderMessage(name?: string, subtitle?: string, price?: string) {
   return name
-    ? `Hi Rooh Gehna! I'd like to order ${name} (${subtitle}). Could you share the price and delivery details?`
-    : "Hi Rooh Gehna! I'd like to order from your collection. Could you share prices and delivery details?";
+    ? `Hi Rooh Gehna! I'd like to order ${name} (${subtitle}${price ? ", " + price : ""}). Could you share the delivery details?`
+    : "Hi Rooh Gehna! I'd like to order from your collection. Could you share the delivery details?";
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/products";
 import ProductImage from "./ProductImage";
 import { ArrowIcon } from "./Icons";
 
@@ -15,7 +15,7 @@ export default function ProductCard({ product, priority }: { product: Product; p
         <div>
           <Link href={`/product/${product.slug}`} className="card__name">{product.name}</Link>
           <p className="card__sub">{product.subtitle}</p>
-          <p className="card__price">DM for price</p>
+          <p className="card__price">{formatPrice(product.price)}<span className="card__dm">DM to order</span></p>
         </div>
         <Link href={`/product/${product.slug}`} className="card__add" aria-label={`View ${product.name}`}>
           <ArrowIcon size={18} />

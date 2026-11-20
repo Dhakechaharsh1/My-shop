@@ -43,7 +43,7 @@ export const POLICIES: Record<string, { title: string; body: { h?: string; p: st
     body: [
       { p: "By using this website and ordering from Rooh Gehna, you agree to these terms." },
       { h: "Products", p: "We take care to show our jewellery accurately. Small variations in colour and finish are natural and are not defects." },
-      { h: "Pricing and orders", p: "Prices are shared in our Instagram DMs and are in Indian Rupees. An order is confirmed once we have received your payment and confirmed it in the DM." },
+      { h: "Pricing and orders", p: "Prices are shown on this website in Indian Rupees. Orders are placed by DM on Instagram and are confirmed once we have received your payment." },
       { h: "Availability", p: "Pieces are made in small batches. If a piece sells out after you message us, we’ll let you know straight away." },
       { h: "Governing law", p: "These terms are governed by the laws of India." },
     ],
