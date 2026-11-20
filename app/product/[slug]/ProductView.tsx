@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { formatPrice, type Product } from "@/lib/products";
 import ProductImage from "@/components/ProductImage";
 import OrderButton from "@/components/OrderButton";
-import { ChevronIcon, GiftIcon, ShieldIcon, TruckIcon } from "@/components/Icons";
+import { ChevronIcon, ShieldIcon, SparkIcon, TruckIcon } from "@/components/Icons";
 
 export default function ProductView({ product }: { product: Product }) {
   const [active, setActive] = useState(0);
@@ -68,7 +68,7 @@ export default function ProductView({ product }: { product: Product }) {
 
           <div className="pdp__perks">
             <div><ShieldIcon /> Checked by hand</div>
-            <div><GiftIcon /> Gift-ready box</div>
+            <div><SparkIcon size={18} /> Handpicked design</div>
             <div><TruckIcon /> Ships across India</div>
           </div>
 
@@ -83,13 +83,13 @@ export default function ProductView({ product }: { product: Product }) {
               <summary>How to order <ChevronIcon size={18} /></summary>
               <div className="acc__body">
                 Tap “DM to order on Instagram” and send us a DM with the name of this piece ({product.name}). We’ll confirm availability,
-                share payment options and delivery time, and pack your order once it’s confirmed.
+                share payment options and delivery time, and ship your order once it’s confirmed.
               </div>
             </details>
             <details>
               <summary>Care <ChevronIcon size={18} /></summary>
               <div className="acc__body">
-                Keep away from perfume, water and moisture. Wipe gently with a soft dry cloth after wearing and store in its pouch,
+                Keep away from perfume, water and moisture. Wipe gently with a soft dry cloth after wearing and store it in an airtight box,
                 separately from other pieces, so the finish and the ghungroos stay bright.
               </div>
             </details>

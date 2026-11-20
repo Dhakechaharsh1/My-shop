@@ -89,7 +89,7 @@ export default function Home() {
             {[
               ["Choose your pair", "Browse the collection and pick the colour you love."],
               ["Send us a DM", "Tap “DM to order” and message @rooh.gehna with the piece’s name. We’ll confirm availability and delivery details."],
-              ["We pack it with love", "Your piece arrives in our gift-ready box, wrapped by hand."],
+              ["Delivered to your door", "Once your order is confirmed, we ship it across India in 4–7 days."],
             ].map(([t, d], i) => (
               <Reveal key={t} className="step" delay={i * 80}>
                 <span className="step__n">{i + 1}</span>
@@ -120,7 +120,7 @@ export default function Home() {
               The peacock — mor — has always meant grace and celebration in our homes. Rooh Gehna began with that feeling:
               jewellery that looks like an heirloom, feels light enough to live in, and is priced so you can wear it often.
             </p>
-            <p className="lede">Every piece is checked, polished and packed by hand before it reaches you.</p>
+            <p className="lede">Every piece is checked and polished by hand before it reaches you.</p>
             <span className="signature">— Khushi</span>
             <div><Link href="/about" className="link-arrow">Read our story <ArrowIcon size={16} /></Link></div>
           </Reveal>

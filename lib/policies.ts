@@ -25,7 +25,7 @@ export const POLICIES: Record<string, { title: string; body: { h?: string; p: st
     title: "Jewellery Care",
     body: [
       { p: "Our pieces have a plated, antique finish. With a little love, they stay beautiful for years." },
-      { h: "Do", p: "Wear your jewellery last — after makeup, perfume and hairspray. Wipe with a soft, dry cloth after use. Store each piece separately in its pouch, in an airtight box if possible." },
+      { h: "Do", p: "Wear your jewellery last — after makeup, perfume and hairspray. Wipe with a soft, dry cloth after use. Store each piece separately, in an airtight box or zip bag if possible." },
       { h: "Don’t", p: "Avoid water, perfume, sanitiser and moisture. Don’t sleep, bathe, swim or exercise in your jewellery." },
     ],
   },

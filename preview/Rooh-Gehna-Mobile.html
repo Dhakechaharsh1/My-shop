@@ -1587,7 +1587,7 @@ textarea {
       { h: "Cancellations", p: "You can cancel any time before your order is dispatched. Just send us a DM." }] },
     care: { title: "Jewellery Care", body: [
       { p: "Our pieces have a plated, antique finish. With a little love, they stay beautiful for years." },
-      { h: "Do", p: "Wear your jewellery last — after makeup, perfume and hairspray. Wipe with a soft, dry cloth after use. Store each piece separately in its pouch, in an airtight box if possible." },
+      { h: "Do", p: "Wear your jewellery last — after makeup, perfume and hairspray. Wipe with a soft, dry cloth after use. Store each piece separately, in an airtight box or zip bag if possible." },
       { h: "Don’t", p: "Avoid water, perfume, sanitiser and moisture. Don’t sleep, bathe, swim or exercise in your jewellery." }] },
     privacy: { title: "Privacy Policy", body: [
       { p: "Rooh Gehna (“we”, “us”) respects your privacy. This website does not collect personal details, payments or accounts. Orders are placed with us directly on Instagram." },
@@ -1679,7 +1679,7 @@ textarea {
     var f = PRODUCTS[0];
     var steps = [["Choose your pair", "Browse the collection and pick the colour you love."],
       ["Send us a DM", "Tap “DM to order” and message @rooh.gehna with the piece’s name. We’ll confirm availability and delivery details."],
-      ["We pack it with love", "Your piece arrives in our gift-ready box, wrapped by hand."]];
+      ["Delivered to your door", "Once your order is confirmed, we ship it across India in 4–7 days."]];
     return '<section class="hero" aria-label="Rooh Gehna by Khushi"><div class="hero__bg" aria-hidden="true"></div><div class="hero__frame">' +
       '<img class="hero__img" src="' + IMG.hero + '" alt="Rooh Gehna by Khushi — peacock emblem on a soft ivory wall with pearls and kundan jewellery">' +
       '<div class="hero__cta"><p>Heritage jewellery, for the soul.</p><div class="hero__btns"><a href="#shop" class="btn btn--primary">Shop the collection</a><a href="#about" class="btn btn--light">Our story</a></div></div></div></section>' +
@@ -1695,7 +1695,7 @@ textarea {
         '<div style="display:flex;justify-content:center;margin-top:40px">' + orderBtn() + "</div></div></section>" +
       '<section class="section section--sand"><div class="container story">' +
         reveal('<div class="story__frame"><img src="' + IMG.lockup + '" alt="Rooh Gehna by Khushi"><p>Handpicked with love</p></div>', "story__art story__art--card") +
-        reveal('<span class="eyebrow">by Khushi</span><h2 class="h2">A peacock, a promise, and a love for old-world craft.</h2><p class="lede">The peacock — mor — has always meant grace and celebration in our homes. Rooh Gehna began with that feeling: jewellery that looks like an heirloom, feels light enough to live in, and is priced so you can wear it often.</p><p class="lede">Every piece is checked, polished and packed by hand before it reaches you.</p><span class="signature">— Khushi</span><div><a href="#about" class="link-arrow">Read our story ' + I.arrow(16) + "</a></div>", "story__body", 120) +
+        reveal('<span class="eyebrow">by Khushi</span><h2 class="h2">A peacock, a promise, and a love for old-world craft.</h2><p class="lede">The peacock — mor — has always meant grace and celebration in our homes. Rooh Gehna began with that feeling: jewellery that looks like an heirloom, feels light enough to live in, and is priced so you can wear it often.</p><p class="lede">Every piece is checked and polished by hand before it reaches you.</p><span class="signature">— Khushi</span><div><a href="#about" class="link-arrow">Read our story ' + I.arrow(16) + "</a></div>", "story__body", 120) +
       "</div></section>" +
       '<section class="section">' + reveal('<img src="' + IMG.peacock + '" alt="" width="64" height="71"><h2 class="h2">Join the family on Instagram</h2><p class="lede">New drops, styling reels and behind-the-scenes — @' + IG + '</p><a href="' + IG_URL + '" target="_blank" rel="noopener noreferrer" class="btn btn--primary">' + I.insta(18) + " Follow @" + IG + "</a>", "container band") + "</section>";
   }
@@ -1715,17 +1715,17 @@ textarea {
       '<div class="pdp__info"><div><span class="eyebrow" style="margin-bottom:12px">' + p.badge + '</span><h1 class="pdp__title">' + p.name + '</h1><p class="pdp__sub">' + p.subtitle + "</p></div>" +
       '<div class="pdp__price">' + price(p) + '<em>DM to order</em></div><p class="pdp__desc">' + p.description + "</p>" +
       '<div class="pdp__order" id="rg-buy">' + orderBtn(p, null, "btn btn--primary btn--block btn--lg", true) + "</div>" +
-      '<div class="pdp__perks"><div>' + I.shield() + " Checked by hand</div><div>" + I.gift() + " Gift-ready box</div><div>" + I.truck() + " Ships across India</div></div>" +
+      '<div class="pdp__perks"><div>' + I.shield() + " Checked by hand</div><div>" + I.spark(18) + " Handpicked design</div><div>" + I.truck() + " Ships across India</div></div>" +
       '<div class="acc"><details open><summary>Details ' + I.chev(18) + '</summary><div class="acc__body"><ul>' + p.details.map(function (d) { return "<li>" + d + "</li>"; }).join("") + "</ul></div></details>" +
-      "<details><summary>How to order " + I.chev(18) + '</summary><div class="acc__body">Tap “DM to order on Instagram” and send us a DM with the name of this piece (' + p.name + "). We’ll confirm availability, share payment options and delivery time, and pack your order once it’s confirmed.</div></details>" +
-      "<details><summary>Care " + I.chev(18) + '</summary><div class="acc__body">Keep away from perfume, water and moisture. Wipe gently with a soft dry cloth after wearing and store in its pouch, separately from other pieces, so the finish and the ghungroos stay bright.</div></details></div>' +
+      "<details><summary>How to order " + I.chev(18) + '</summary><div class="acc__body">Tap “DM to order on Instagram” and send us a DM with the name of this piece (' + p.name + "). We’ll confirm availability, share payment options and delivery time, and ship your order once it’s confirmed.</div></details>" +
+      "<details><summary>Care " + I.chev(18) + '</summary><div class="acc__body">Keep away from perfume, water and moisture. Wipe gently with a soft dry cloth after wearing and store it in an airtight box, separately from other pieces, so the finish and the ghungroos stay bright.</div></details></div>' +
       "</div></div>" +
       '<section class="section">' + reveal('<h2 class="h2">Also in this drop</h2><a href="#shop" class="link-arrow">Shop all</a>', "section-head") + grid(others, others.length === 1 ? "grid--single" : "") + "</section></div>" +
       '<div class="sticky-buy" id="rg-sticky"><div><b>' + p.name + "</b><span>" + price(p) + " · DM to order</span></div>" + orderBtn(p, "DM to order") + "</div>";
   }
 
   function vAbout() {
-    var pts = [["Handpicked", "Every design is personally chosen — nothing makes it to the shop unless we’d wear it ourselves."], ["Checked by hand", "Each piece is inspected, polished and packed by hand before it leaves us."], ["Made to last", "Quality plating and secure settings, with care instructions in every box."], ["Small & personal", "Questions? You’ll be talking to us directly — not a call centre."]];
+    var pts = [["Handpicked", "Every design is personally chosen — nothing makes it to the shop unless we’d wear it ourselves."], ["Checked by hand", "Each piece is inspected and polished by hand before it leaves us."], ["Made to last", "Quality plating and secure settings, made to be worn again and again."], ["Small & personal", "Questions? You’ll be talking to us directly — not a call centre."]];
     var b = PRODUCTS[1];
     return '<div class="container">' + reveal('<img src="' + IMG.lockup + '" alt="Rooh Gehna by Khushi" style="width:260px;height:auto;margin-bottom:12px"><h1 class="display" style="max-width:900px">Adornment, for the soul.</h1>', "page-head") + "</div>" +
       '<section class="section--tight" style="padding-top:0"><div class="container story">' + reveal('<img src="' + IMG[b.images[2]] + '" alt="' + b.name + ' earring, close-up" loading="lazy">', "story__art") +

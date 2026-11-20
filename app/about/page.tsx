@@ -40,8 +40,8 @@ export default function About() {
           <div className="promises">
             {[
               ["Handpicked", "Every design is personally chosen — nothing makes it to the shop unless we’d wear it ourselves."],
-              ["Checked by hand", "Each piece is inspected, polished and packed by hand before it leaves us."],
-              ["Made to last", "Quality gold plating and secure settings, with care instructions in every box."],
+              ["Checked by hand", "Each piece is inspected and polished by hand before it leaves us."],
+              ["Made to last", "Quality gold plating and secure settings, made to be worn again and again."],
               ["Small & personal", "Questions? You’ll be talking to us directly — not a call centre."],
             ].map(([t, d], i) => (
               <Reveal key={t} className="promise" delay={i * 80}><b>{t}</b><span>{d}</span></Reveal>
