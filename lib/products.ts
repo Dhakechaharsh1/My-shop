@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
       "Push-back stud closure",
     ],
     badge: "First drop",
-    images: ["/products/gulnaar-1.jpg", "/products/gulnaar-2.jpg"],
+    images: ["/products/gulnaar-1.jpg", "/products/gulnaar-2.jpg", "/products/gulnaar-3.jpg"],
   },
   {
     id: "RG002",
